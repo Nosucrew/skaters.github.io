@@ -80,12 +80,19 @@
 
 <script>
 const grid = document.getElementById('grid');
+
+// Jouw GitHub-afbeeldingen in volgorde
+const skaterImages = [
+  'Epic Swag.jpg',
+  'Girls Love Me.png',
+  'IMG-4297.jpg',
+  'Metallica.png',
+  'rainbowlikeaboss.png'
+];
+
 const totalBoxes = 500;
 
-// Placeholder afbeelding, later vervangen door echte skater afbeeldingen
-const skaterImage = 'https://via.placeholder.com/100x100.png?text=Skater';
-
-for(let i=1; i<=totalBoxes; i++){
+for(let i = 0; i < totalBoxes; i++){
   const box = document.createElement('div');
   box.className = 'box';
 
@@ -94,15 +101,17 @@ for(let i=1; i<=totalBoxes; i++){
   box.appendChild(stars);
 
   const img = document.createElement('img');
-  img.src = skaterImage;
-  img.alt = `Skater ${i}`;
+  img.src = skaterImages[i % skaterImages.length]; // 1,2,3,4,5 herhalen
+  img.alt = `Skater ${i + 1}`;
   box.appendChild(img);
 
   const btn = document.createElement('button');
   btn.className = 'download-btn';
   btn.innerText = 'Download';
   btn.onclick = () => {
-    alert(`Downloading Skater ${i} file...`);
+    alert(`Downloading Skater ${i + 1} file...`);
+    // Hier kan later een echte download link:
+    // window.location.href = `files/skater${i+1}.zip`;
   };
   box.appendChild(btn);
 
