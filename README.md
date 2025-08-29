@@ -54,14 +54,12 @@
     text-align: center;
   }
 
-  /* Galaxy animatie */
   @keyframes galaxy {
     0% { background: linear-gradient(135deg, #1e3c72, #2a5298); }
     50% { background: linear-gradient(135deg, #1e3c72, #00ffcc); }
     100% { background: linear-gradient(135deg, #1e3c72, #ff00ff); }
   }
 
-  /* Sterretjes overlay */
   .stars {
     position: absolute;
     width: 100%;
@@ -81,13 +79,13 @@
 <script>
 const grid = document.getElementById('grid');
 
-// Jouw GitHub-afbeeldingen in volgorde
+// URL-vriendelijke afbeeldingen in images/ map
 const skaterImages = [
-  'Epic Swag.jpg',
-  'Girls Love Me.png',
-  'IMG-4297.jpg',
-  'Metallica.png',
-  'rainbowlikeaboss.png'
+  'images/Epic-Swag.jpg',
+  'images/Girls-Love-Me.png',
+  'images/IMG-4297.jpg',
+  'images/Metallica.png',
+  'images/rainbowlikeaboss.png'
 ];
 
 const totalBoxes = 500;
@@ -110,7 +108,7 @@ for(let i = 0; i < totalBoxes; i++){
   btn.innerText = 'Download';
   btn.onclick = () => {
     alert(`Downloading Skater ${i + 1} file...`);
-    // Hier kan later een echte download link:
+    // Later kan je hier echte download link toevoegen:
     // window.location.href = `files/skater${i+1}.zip`;
   };
   box.appendChild(btn);
