@@ -79,13 +79,12 @@
 <script>
 const grid = document.getElementById('grid');
 
-// URL-vriendelijke afbeeldingen in images/ map
+// Gebruik de raw GitHub links van je afbeeldingen
 const skaterImages = [
-  'images/Epic-Swag.jpg',
-  'images/Girls-Love-Me.png',
-  'images/IMG-4297.jpg',
-  'images/Metallica.png',
-  'images/rainbowlikeaboss.png'
+  'https://raw.githubusercontent.com/Nosucrew/skaters.github.io/main/Epic%20Swag.jpg',
+  'https://raw.githubusercontent.com/Nosucrew/skaters.github.io/main/Girls%20Love%20Me.png',
+  'https://raw.githubusercontent.com/Nosucrew/skaters.github.io/main/IMG-4297.jpg',
+  'https://raw.githubusercontent.com/Nosucrew/skaters.github.io/main/Metallica.png'
 ];
 
 const totalBoxes = 500;
@@ -99,7 +98,7 @@ for(let i = 0; i < totalBoxes; i++){
   box.appendChild(stars);
 
   const img = document.createElement('img');
-  img.src = skaterImages[i % skaterImages.length]; // 1,2,3,4,5 herhalen
+  img.src = skaterImages[i % skaterImages.length]; // 1,2,3,4 herhalen
   img.alt = `Skater ${i + 1}`;
   box.appendChild(img);
 
@@ -108,8 +107,6 @@ for(let i = 0; i < totalBoxes; i++){
   btn.innerText = 'Download';
   btn.onclick = () => {
     alert(`Downloading Skater ${i + 1} file...`);
-    // Later kan je hier echte download link toevoegen:
-    // window.location.href = `files/skater${i+1}.zip`;
   };
   box.appendChild(btn);
 
