@@ -6,14 +6,14 @@
 <style>
   body {
     font-family: Arial, sans-serif;
-    background: black;
     margin: 0;
     padding: 20px;
+    background: black;
+    color: white;
   }
 
   h1 {
     text-align: center;
-    color: white;
   }
 
   .grid {
@@ -29,11 +29,11 @@
     height: 160px;
     border-radius: 10px;
     overflow: hidden;
-    cursor: pointer;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 5px;
+    cursor: pointer;
     animation: galaxy 12s infinite alternate;
   }
 
@@ -54,7 +54,7 @@
     text-align: center;
   }
 
-  /* Galaxy animation */
+  /* Galaxy animatie */
   @keyframes galaxy {
     0% { background: linear-gradient(135deg, #1e3c72, #2a5298); }
     50% { background: linear-gradient(135deg, #1e3c72, #00ffcc); }
@@ -82,7 +82,7 @@
 const grid = document.getElementById('grid');
 const totalBoxes = 500;
 
-// Placeholder skater image (je kunt dit later vervangen)
+// Placeholder afbeelding, later vervangen door echte skater afbeeldingen
 const skaterImage = 'https://via.placeholder.com/100x100.png?text=Skater';
 
 for(let i=1; i<=totalBoxes; i++){
@@ -102,7 +102,6 @@ for(let i=1; i<=totalBoxes; i++){
   btn.className = 'download-btn';
   btn.innerText = 'Download';
   btn.onclick = () => {
-    // Simuleer download
     alert(`Downloading Skater ${i} file...`);
   };
   box.appendChild(btn);
