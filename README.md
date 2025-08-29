@@ -7,20 +7,55 @@
   body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 20px;
+    padding: 0;
     background: black;
+    color: white;
+  }
+
+  /* Overlay for consent */
+  #consentOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.95);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+
+  #consentOverlay label {
+    display: block;
+    margin: 15px 0;
+    font-size: 16px;
+  }
+
+  #consentOverlay button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #1e3c72;
     color: white;
   }
 
   h1 {
     text-align: center;
+    margin-top: 20px;
   }
 
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     gap: 10px;
-    margin-top: 20px;
+    margin: 20px;
   }
 
   .box {
@@ -73,13 +108,37 @@
 </head>
 <body>
 
+<!-- Consent Overlay -->
+<div id="consentOverlay">
+  <h2>Disclaimer & Terms</h2>
+  <p>Some content may be sensitive, offensive, or disturbing to some viewers.</p>
+  <label>
+    <input type="checkbox" id="consentCheckbox">
+    I have read and accept the terms
+  </label>
+  <button id="proceedBtn" disabled>Proceed</button>
+</div>
+
 <h1>Skater Files Download</h1>
 <div class="grid" id="grid"></div>
 
 <script>
+const checkbox = document.getElementById('consentCheckbox');
+const proceedBtn = document.getElementById('proceedBtn');
+const overlay = document.getElementById('consentOverlay');
 const grid = document.getElementById('grid');
 
-// Gebruik de raw GitHub links van je afbeeldingen
+// Enable button only if checkbox is checked
+checkbox.addEventListener('change', () => {
+  proceedBtn.disabled = !checkbox.checked;
+});
+
+// Hide overlay when proceeding
+proceedBtn.addEventListener('click', () => {
+  overlay.style.display = 'none';
+});
+
+// Raw GitHub links for images
 const skaterImages = [
   'https://raw.githubusercontent.com/Nosucrew/skaters.github.io/main/Epic%20Swag.jpg',
   'https://raw.githubusercontent.com/Nosucrew/skaters.github.io/main/Girls%20Love%20Me.png',
@@ -89,6 +148,7 @@ const skaterImages = [
 
 const totalBoxes = 500;
 
+// Generate boxes
 for(let i = 0; i < totalBoxes; i++){
   const box = document.createElement('div');
   box.className = 'box';
@@ -98,7 +158,7 @@ for(let i = 0; i < totalBoxes; i++){
   box.appendChild(stars);
 
   const img = document.createElement('img');
-  img.src = skaterImages[i % skaterImages.length]; // 1,2,3,4 herhalen
+  img.src = skaterImages[i % skaterImages.length];
   img.alt = `Skater ${i + 1}`;
   box.appendChild(img);
 
