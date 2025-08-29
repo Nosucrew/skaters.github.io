@@ -12,7 +12,7 @@
     color: white;
   }
 
-  /* Overlay for consent */
+  /* Consent Overlay */
   #consentOverlay {
     position: fixed;
     top: 0;
@@ -53,28 +53,28 @@
 
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* smaller boxes for zoomed-in look */
+    gap: 5px;
     margin: 20px;
   }
 
   .box {
     position: relative;
-    width: 120px;
-    height: 160px;
+    width: 100px;
+    height: 140px;
     border-radius: 10px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 5px;
+    padding: 3px;
     cursor: pointer;
-    animation: galaxy 12s infinite alternate;
+    animation: galaxy 12s infinite alternate ease-in-out;
   }
 
   .box img {
     width: 100%;
-    height: 100px;
+    height: 90px;
     object-fit: cover;
     border-radius: 5px;
   }
@@ -84,15 +84,17 @@
     border: none;
     border-radius: 5px;
     padding: 4px;
-    font-size: 12px;
+    font-size: 11px;
     cursor: pointer;
     text-align: center;
   }
 
   @keyframes galaxy {
     0% { background: linear-gradient(135deg, #1e3c72, #2a5298); }
-    50% { background: linear-gradient(135deg, #1e3c72, #00ffcc); }
-    100% { background: linear-gradient(135deg, #1e3c72, #ff00ff); }
+    25% { background: linear-gradient(135deg, #1e3c72, #00ffcc); }
+    50% { background: linear-gradient(135deg, #1e3c72, #ff00ff); }
+    75% { background: linear-gradient(135deg, #1e3c72, #00ffff); }
+    100% { background: linear-gradient(135deg, #1e3c72, #2a5298); }
   }
 
   .stars {
@@ -128,17 +130,17 @@ const proceedBtn = document.getElementById('proceedBtn');
 const overlay = document.getElementById('consentOverlay');
 const grid = document.getElementById('grid');
 
-// Enable button only if checkbox is checked
+// Enable proceed button only if checkbox is checked
 checkbox.addEventListener('change', () => {
   proceedBtn.disabled = !checkbox.checked;
 });
 
-// Hide overlay when proceeding
+// Hide overlay on proceed
 proceedBtn.addEventListener('click', () => {
   overlay.style.display = 'none';
 });
 
-// Raw GitHub links for images
+// GitHub raw image links
 const skaterImages = [
   'https://raw.githubusercontent.com/Nosucrew/skaters.github.io/main/Epic%20Swag.jpg',
   'https://raw.githubusercontent.com/Nosucrew/skaters.github.io/main/Girls%20Love%20Me.png',
@@ -148,7 +150,7 @@ const skaterImages = [
 
 const totalBoxes = 500;
 
-// Generate boxes
+// Create the boxes
 for(let i = 0; i < totalBoxes; i++){
   const box = document.createElement('div');
   box.className = 'box';
@@ -158,7 +160,7 @@ for(let i = 0; i < totalBoxes; i++){
   box.appendChild(stars);
 
   const img = document.createElement('img');
-  img.src = skaterImages[i % skaterImages.length];
+  img.src = skaterImages[i % skaterImages.length]; // repeat images 1-4
   img.alt = `Skater ${i + 1}`;
   box.appendChild(img);
 
