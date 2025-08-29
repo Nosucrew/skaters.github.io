@@ -1,56 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Skater Hub - Mega Gallery</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<style>
-  body { background: #111; color: #f0f0f0; font-family: Arial, sans-serif; }
-  h1,h2,h3,h4 { font-family: 'Bangers', cursive; }
-  .skater-card { min-width: 220px; flex-shrink: 0; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-  .skater-card:hover { transform: translateY(-5px) rotate(-1deg); box-shadow: 0 10px 20px rgba(0,255,0,0.3); }
-  /* Hide default scrollbar but allow scroll */
-  .scrollbar-hide::-webkit-scrollbar { display: none; }
-  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-</style>
-</head>
-<body class="text-gray-100">
-
-<!-- Navbar -->
-<nav class="bg-gray-800/90 backdrop-blur p-4 sticky top-0 z-50 flex justify-between items-center">
-  <h1 class="text-3xl font-bold text-green-400">Skater Hub</h1>
-</nav>
-
-<!-- Hero -->
-<header class="text-center py-12 bg-gray-900/80">
-  <h2 class="text-5xl font-bold mb-4 text-green-400 drop-shadow-lg">Skater Mega Gallery</h2>
-  <p class="text-gray-300 text-lg max-w-2xl mx-auto">Scroll through hundreds of skaters. Click to download your favorites!</p>
-</header>
-
-<!-- Horizontal Scroll Gallery -->
-<section class="py-16 px-6">
-  <h3 class="text-3xl font-bold text-green-400 mb-6 text-center">All Skaters</h3>
-  <div class="overflow-x-auto scrollbar-hide flex space-x-4 px-4">
-    <div id="skaterContainer" class="flex space-x-4"></div>
-  </div>
-</section>
+<!-- Terms of Service Overlay -->
+<div id="tosOverlay" class="fixed inset-0 bg-black/90 flex flex-col items-center justify-center z-50 px-4">
+  <h2 class="text-4xl font-bold mb-6 text-green-400 drop-shadow-lg text-center">Welcome to Skater Hub</h2>
+  <p class="text-gray-300 max-w-lg text-center mb-6">
+    Yo! Some skaters on this site might be wild or not suitable for everyone. We don’t condone anything inappropriate — but some things may exist anyway. 
+    Skate safe and have fun!
+  </p>
+  <button onclick="acceptTerms()" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl shadow-lg transition">
+    Okeeeeeeeee, I Accept
+  </button>
+</div>
 
 <script>
-  const container = document.getElementById('skaterContainer');
-
-  for(let i=1; i<=500; i++){
-    const card = document.createElement('div');
-    card.className = 'skater-card bg-gray-800 rounded-2xl shadow-lg text-center p-4';
-    card.innerHTML = `
-      <div class="h-48 bg-gray-700 flex items-center justify-center text-gray-400 mb-4">Skater ${i}</div>
-      <h4 class="text-xl font-bold mb-2 text-yellow-400">Skater ${i}</h4>
-      <p class="text-gray-300 mb-4">Awesome tricks!</p>
-      <a href="#" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-xl transition inline-block">Download</a>
-    `;
-    container.appendChild(card);
+  function acceptTerms() {
+    document.getElementById('tosOverlay').style.display = 'none';
   }
 </script>
-
-</body>
-</html>
